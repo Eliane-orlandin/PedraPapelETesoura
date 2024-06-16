@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      window.addEventListener("load", (event) => {
+        const listaDeItems = document.getElementsByClassName("item-do-jogo");
+        const tamanhoDaListaDeItems = listaDeItems.length; //4
+
+        for (i = 0; i < tamanhoDaListaDeItems; i++) {
+          listaDeItems.item(i).addEventListener("click", (evento) => {});
+        }
+      });
+      // Pedra = 0, Papel = 1, Tesoura = 2
+      const items = ["🪨", "📃", "✂️"];
+
+      function selecionarItemAleatorio() {
+        const numeroAleatorio = Math.floor(Math.random() * 3);
+        return items[numeroAleatorio];
+      }
+
+      /* function resultadoDoJogo(itemJogador, itemAleatório)
+        if (itemDoJogador "🪨" && itemAleatorio "✂️") || (itemDoJogador "✂️" && itemAleatorio "📃") || (itemDoJogador "📃" && itemAleatorio "🪨"){return "Você ganhou"}
+        if (itemDoJogador "🪨" && itemAleatorio "📃") || (itemDoJogador "✂️" && itemAleatorio "🪨") || (itemDoJogador "📃" && itemAleatorio "✂️"){return "Você perdeu"}
+        else {return "Empate"}
+    
+*/
+      function resultadoDoJogo(itemDoJogador, itemAleatorio) {
+        if (itemDoJogador === "🪨") {
+          if (itemAleatorio === "📃") return "Você perdeu";
+          if (itemAleatorio === "✂️") return "Você ganhou";
+          return "Empate";
+        }
+        if (itemDoJogador === "📃") {
+          if (itemAleatorio === "✂️") return "Você perdeu";
+          if (itemAleatorio === "🪨") return "Você ganhou";
+          return "Empate";
+
+          if (itemDoJogador === "✂️") {
+            if (itemAleatorio === "🪨") return "Você perdeu";
+            if (itemAleatorio === "📃") return "Você ganhou";
+            return "Empate";
+          }
+        }
+      }
+      console.log(resultadoDoJogo("🪨", selecionarItemAleatorio()));
+    </script>
+    <title>Pedra, Papel e Tesoura</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="linha"></div>
+      <div class="item-do-jogo">🪨</div>
+      <div class="item-do-jogo">📃</div>
+      <div class="item-do-jogo">✂️</div>
+      <div class="item-do-jogo">?</div>
+      <div class="linha"></div>
+    </div>
+    <div class="linha">
+      <h1>Resultado:</h1>
+    </div>
+
+    <div class="container">
+      <h1>Regras</h1>
+      <ul>
+        <li>Pedra ganha da tesoura (amassando-a ou quebrando-a).</li>
+        <li>Tesoura ganha do papel (cortando-a).</li>
+        <li>Papel ganha da pedra (embrulhando-a).</li>
+      </ul>
+    </div>
+  </body>
+</html>
